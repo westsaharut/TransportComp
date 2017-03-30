@@ -11,9 +11,9 @@
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
 						<?php
-							if(isset($_SESSION["UseType"])){
+							if(isset($_SESSION["Type"])){
 						?>
-								<a class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> <?= $_SESSION["UseFirstName"]?> (<?= $_SESSION["UseType"]?>)<span class="caret"></span></a>
+								<a class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> <?= $_SESSION["FirstName"]?><span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="query/logout.php"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Sing out</a></li>
 								</ul>
@@ -37,16 +37,26 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="index.php"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg>  Home</a></li>
+			<li class="active"><a href="index.php"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg>  หน้าหลัก</a></li>
 			<?php
-				if(!empty($_SESSION["UseType"])){
-					if($_SESSION["UseType"] == "admin"){
+				if(!empty($_SESSION["Type"])){
+					if($_SESSION["Type"] == "Admin"){
 			?>
-						<li><a href="addParking.php"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp;&nbsp; Add Parking</a></li>
+						<li><a href="addUser.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;&nbsp; เพิ่มบัญชี</a></li>
+						<li><a href="deposit.php"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp;&nbsp; ฝากเงิน</a></li>
+						<li><a href="borrow.php"><i class="fa fa-money" aria-hidden="true"></i> &nbsp;&nbsp; กู้ยืมเงิน</a></li>
+						<li><a href="borrowList.php"><i class="fa fa-money" aria-hidden="true"></i> &nbsp;&nbsp; ประวัติการกู้ยืมเงิน</a></li>
 			<?php
-					}else if($_SESSION["UseType"] == "user"){
+					}else if($_SESSION["Type"] == "User"){
 			?>
-
+						<?php
+							if($_SESSION["AccountTypeID"]==1){
+						?>
+								<li><a href="Withdrawal.php"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp;&nbsp; ถอนเงิน</a></li>
+						<?php
+							}
+						?>
+						<li><a href="historyList.php"><i class="fa fa-list" aria-hidden="true"></i> &nbsp;&nbsp; ดูประวัติ</a></li>
 			<?php
 					}
 				}

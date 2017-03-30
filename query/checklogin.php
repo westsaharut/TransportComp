@@ -7,15 +7,16 @@
 
       $sql_select = " SELECT *
                       FROM Users
-                      WHERE UseUsername = '" . $_POST["input_username"] . "'
-                            AND UsePassword = '" . $_POST["input_password"] ."' ";
+                      WHERE Username = '" . $_POST["input_username"] . "'
+                            AND Password = '" . $_POST["input_password"] ."' ";
       $result = $conn->query($sql_select);
       if($result->num_rows > 0){
         $row = $result->fetch_assoc();
-        $_SESSION["UseID"]         = $row["UseID"] ;
-        $_SESSION["UseFirstName"]  = $row["UseFirstname"];
-        $_SESSION["UseLastName"]   = $row["UseLastname"];
-        $_SESSION["UseType"]   = $row["UseType"];
+        $_SESSION["ID"]         = $row["ID"] ;
+        $_SESSION["FirstName"]  = $row["FirstName"];
+        $_SESSION["LastName"]   = $row["LastName"];
+        $_SESSION["Type"]   = $row["Type"];
+        $_SESSION["AccountTypeID"]   = $row["AccountTypeID"];
         echo "<script>alert(\"Login done!!.\")
         window.location.href=\"../index.php\";</script>";
       }else{

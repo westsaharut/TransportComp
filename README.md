@@ -1,1 +1,1 @@
-Lab Parking in CS446 MJU
+West: Lab Bank in CS446 MJU
