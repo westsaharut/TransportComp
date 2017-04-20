@@ -15,52 +15,8 @@
         <div class="panel-body">
           <h1>
             <label style="color: #cecece">ชื่อ :</label> <?= $_SESSION["FirstName"] . " " . $_SESSION["LastName"]?><br>
-            <?php
-              if($_SESSION["Type"]=="User"){
-            ?>
-              <label style="color: #cecece">ชนิด :</label>
-              <?php
-                $sql = "SELECT * FROM `AccoutTypes` WHERE `ID` = " . $_SESSION["AccountTypeID"];
-                $result = $conn->query($sql);
-                if($result->num_rows > 0) {
-                  if($row = $result->fetch_assoc()){
-                    echo $row["Name"];
-                  }
-                }
-              ?><br>
-              <label style="color: #cecece">ยอดเงินคงเหลือ :</label>
-              <?php
-                $sql = "SELECT `Money` FROM `Users` WHERE ID = " . $_SESSION["ID"];
-                $result = $conn->query($sql);
-                if($result->num_rows > 0) {
-                  if($row = $result->fetch_assoc()){
-                    echo $row["Money"];
-                  }
-                }
-              ?>​ ฿<br>
-            <?php
-              }else if($_SESSION["Type"]=="Admin"){
-            ?>
-                You're Admin!!
-            <?php
-              }
-            ?>
-            <?php
-              if($_SESSION["AccountTypeID"]==2){
-            ?>
-                ยังไม่ครบ 2 ปี ยังถอนไม่ได้
-                <?php
-                  $sql = "SELECT *, DATE_ADD(CreateDate, INTERVAL 1 YEAR) AS `endDate`, NOW() AS `now` FROM `Users` WHERE `ID` =" . $_SESSION["ID"];
-                  $result = $conn->query($sql);
-                  if($result->num_rows > 0) {
-                    if($row = $result->fetch_assoc()){
-                      // echo $row["endDate"] - $row["now"];
-                    }
-                  }
-                ?>
-            <?php
-              }
-            ?>
+            <label style="color: #cecece">ที่อยู่ :</label> <?= $_SESSION["Address"]?><br>
+            <label style="color: #cecece">ชนิดบัญชี :</label> <?= $_SESSION["Type"]?><br>
           </h1>
         </div>
       </div>

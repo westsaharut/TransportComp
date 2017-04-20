@@ -16,6 +16,11 @@
       document.form.lastname.focus();
       return false;
     }
+    if(document.form.address.value == ""){
+      alert("Please input address");
+      document.form.address.focus();
+      return false;
+    }
     if(document.form.username.value == ""){
       alert("Please input username");
       document.form.username.focus();
@@ -38,28 +43,23 @@
         }
       }
     }
-    if(document.form.money.value < 2000){
-      alert("Please input money > 2000 or = 2000");
-      document.form.money.focus();
-      return false;
-    }
   }
 </script>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">ถอนเงิน</h1>
+      <h1 class="page-header">Add User</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form action="query/insertUser.php" class="form-horizontal" method="post" name="form" enctype="multipart/form-data" multiple="multiple" onSubmit="return checkspace();">
+          <form action="query/insertUser.php" class="form-horizontal" method="post" name="form" onSubmit="return checkspace();">
             <fieldset>
               <div class="form-group">
-                <label for="name" class="col-lg-3 control-label">ชื่อ :</label>
+                <label for="firstname" class="col-lg-3 control-label">ชื่อ :</label>
                 <div class="col-lg-3">
                   <input name="firstname" type="text" class="form-control" id="firstname" placeholder="Enter firstname." autofocus>
                 </div>
@@ -68,51 +68,44 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="name" class="col-lg-3 control-label">Username :</label>
+                <label for="address" class="col-lg-3 control-label">Address :</label>
+                <div class="col-lg-3">
+                  <textarea name="address" rows="5" cols="60" id="address" placeholder="Enter address."></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="username" class="col-lg-3 control-label">Username :</label>
                 <div class="col-lg-3">
                   <input name="username" type="text" class="form-control" id="username" placeholder="Enter username." >
                 </div>
               </div>
               <div class="form-group">
-                <label for="name" class="col-lg-3 control-label">Password :</label>
+                <label for="password" class="col-lg-3 control-label">Password :</label>
                 <div class="col-lg-3">
                   <input name="password" type="password" class="form-control" id="password" placeholder="Enter password." >
                 </div>
               </div>
               <div class="form-group">
-                <label for="name" class="col-lg-3 control-label">Confirm Password :</label>
+                <label for="confirmpassword" class="col-lg-3 control-label">Confirm Password :</label>
                 <div class="col-lg-3">
                   <input name="confirmpassword" type="password" class="form-control" id="confirmpassword" placeholder="Enter confirm password." >
                 </div>
               </div>
               <div class="form-group">
-                <label for="name" class="col-lg-3 control-label">จำนวนเงินที่ฝาก <label style="color:red">(ขั้นต่ำ 2000)</label> :</label>
-                <div class="col-lg-3">
-                  <input name="money" type="number" class="form-control" id="money" placeholder="Enter money." >
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name" class="col-lg-3 control-label">ชนิดบัญชี :</label>
+                <label for="Type" class="col-lg-3 control-label">ชนิดผู้ใช้ :</label>
                 <div class="col-lg-6">
-                  <select name="accountTypeID">
-                    <?php
-                      $sql = "SELECT * FROM `AccoutTypes`";
-                      $result = $conn->query($sql);
-                      if($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()){
-                    ?>
-                          <option value="<?=$row["ID"]?>"><?= $row["Name"]?></option>
-                    <?php
-                        }
-                      }
-                    ?>
+                  <select name="type">
+                    <option value="User">ผู้ใช้</option>
+                    <option value="Clerk">เสมียน</option>
+                    <option value="Chauffeur">พนักงานขับรถ</option>
+                    <option value="Entrepreneur">ผู้ประกอบการ</option>
                   </select>
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
-                  <a href="index.php" class="btn btn-default btn-sm">Cancel</a>
                   <button type="submit" class="btn btn-info btn-sm">Submit</button>
+                  <a href="index.php" class="btn btn-default btn-sm">Cancel</a>
                 </div>
               </div>
             </fieldset>

@@ -43,20 +43,19 @@
 					if($_SESSION["Type"] == "Admin"){
 			?>
 						<li><a href="addUser.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;&nbsp; เพิ่มบัญชี</a></li>
-						<li><a href="deposit.php"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp;&nbsp; ฝากเงิน</a></li>
-						<li><a href="borrow.php"><i class="fa fa-money" aria-hidden="true"></i> &nbsp;&nbsp; กู้ยืมเงิน</a></li>
-						<li><a href="borrowList.php"><i class="fa fa-money" aria-hidden="true"></i> &nbsp;&nbsp; ประวัติการกู้ยืมเงิน</a></li>
 			<?php
 					}else if($_SESSION["Type"] == "User"){
 			?>
-						<?php
-							if($_SESSION["AccountTypeID"]==1){
-						?>
-								<li><a href="Withdrawal.php"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp;&nbsp; ถอนเงิน</a></li>
-						<?php
-							}
-						?>
-						<li><a href="historyList.php"><i class="fa fa-list" aria-hidden="true"></i> &nbsp;&nbsp; ดูประวัติ</a></li>
+						<li><a href="addTransport.php"><i class="fa fa-list" aria-hidden="true"></i> &nbsp;&nbsp; ส่งของ</a></li>
+						<li><a href="MyTransportList.php"><i class="fa fa-list" aria-hidden="true"></i> &nbsp;&nbsp; ดูประวัติการส่ง</a></li>
+			<?php
+					}else if($_SESSION["Type"] == "Clerk" || $_SESSION["Type"] == "Chauffeur"){
+			?>
+						<li><a href="TransportForSendList.php"><i class="fa fa-list" aria-hidden="true"></i> &nbsp;&nbsp; เช็คข้อมูลส่งของ</a></li>
+			<?php
+					}else if($_SESSION["Type"] == "Entrepreneur"){
+			?>
+						<li><a href="TransportSuccList.php"><i class="fa fa-list" aria-hidden="true"></i> &nbsp;&nbsp; ดูประวัติ</a></li>
 			<?php
 					}
 				}

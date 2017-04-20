@@ -15,8 +15,9 @@
         $_SESSION["ID"]         = $row["ID"] ;
         $_SESSION["FirstName"]  = $row["FirstName"];
         $_SESSION["LastName"]   = $row["LastName"];
+        $_SESSION["Address"]   = $row["Address"];
         $_SESSION["Type"]   = $row["Type"];
-        $_SESSION["AccountTypeID"]   = $row["AccountTypeID"];
+
         echo "<script>alert(\"Login done!!.\")
         window.location.href=\"../index.php\";</script>";
       }else{
